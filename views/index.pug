@@ -1,5 +1,51 @@
 extends layout
-
 block content
   h1= title
   p Welcome to #{title}
+  div 
+    if user
+      div
+        a(href="/logout") #{user.username} をログアウト
+      div
+        h2 月
+      div
+        p 前回のメニュー
+      div
+        a(href="/schedules/new") 今回のメニュー
+      div
+        h2 火
+      div
+        a(href="/schedules/new") 今回のメニュー
+      div
+        h2 水
+      div
+        a(href="/schedules/new") 今回のメニュー
+      div
+        h2 木
+      div
+        a(href="/schedules/new") 今回のメニュー
+            div
+        h2 金
+      div
+        a(href="/schedules/new") 今回のメニュー
+      div
+        h2 土
+      div
+        a(href="/schedules/new") 今回のメニュー
+      div
+        h2 日
+      div
+        a(href="/schedules/new") 今回のメニュー
+      
+
+        - var hasSchedule = schedules.length > 0
+        if hasSchedule
+        table.table
+          each schedule in schedules
+            tr
+              td
+                a(href=`/schedules/${schedule.scheduleId}`) #{schedule.scheduleName}
+              td #{schedule.updatedAt}
+    else
+      div
+        a(href="/login") ログイン
